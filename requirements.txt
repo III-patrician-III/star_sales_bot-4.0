@@ -1,4 +1,5 @@
 aiogram
 telethon
 python-dotenv
-requests
+fastapi
+uvicorn
