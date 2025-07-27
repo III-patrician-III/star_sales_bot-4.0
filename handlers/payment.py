@@ -1,1 +1,1 @@
-# existing payment handler code
+# handler for payment commands

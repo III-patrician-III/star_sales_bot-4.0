@@ -26,21 +26,19 @@ dp.include_router(payment.router)
 dp.include_router(admin.router)
 dp.include_router(crypto.router)
 
-# Startup event: set webhook
 @app.on_event("startup")
 async def on_startup():
     webhook_url = f"{cfg.webhook_base}/telegram_webhook"
     await bot.set_webhook(webhook_url)
 
-# Shutdown event: close session
 @app.on_event("shutdown")
 async def on_shutdown():
     await bot.session.close()
 
-# Telegram webhook endpoint
+# Telegram webhook
 SimpleRequestHandler(dispatcher=dp, bot=bot).register(app, path="/telegram_webhook")
 
-# CryptoCloud webhook endpoint
+# CryptoCloud webhook
 @app.post("/crypto_webhook")
 async def crypto_webhook(request: Request, x_signature: str = Header(..., alias="X-Signature")):
     body = await request.body()

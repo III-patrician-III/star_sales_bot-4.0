@@ -1,1 +1,1 @@
-# existing admin handler code
+# handler for admin commands

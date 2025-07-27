@@ -1,1 +1,1 @@
-# existing start handler code
+# handler for /start command
